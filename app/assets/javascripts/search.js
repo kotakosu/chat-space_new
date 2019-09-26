@@ -21,13 +21,13 @@ $(function() {
       dataType: 'json'
     })
    .done(function(data) {
-    //  console.log(data)
+
      $(".listview.js-lazy-load-images").empty();
      if (data.length !== 0) {
        data.forEach(function(user){
-        //  appendProduct(user);
+
         var html = AddUser(user);
-        // console.log(html)
+    
         $('#user-search-result').append(html)
        });
      }
@@ -54,23 +54,14 @@ $(function() {
   return html;
   }
   
-// 　追加ボタン
+
   $(document).on("click",".user-search-add",function() {
-    // console.log(this) 
-    var id = $(this).attr('data-user-id');
-    // console.log(id)
-    var name = $(this).attr('data-user-name');
-    // console.log(name)
-    // $("chat-group-user__name").attr('user.id','user.name');
-    //1.要素を削除する処理
+    var id = $(this).data('user-id');
+    var name = $(this).data('user-name');
   　$(".chat-group-user").remove();
-　　　//2.要素を追加する処理
     RemoveUser(id,name)
-// 　　$('.chat-group-form__field').append(html);
   });
-  // 削除ボタン
   $(document).on("click",".user-search-remove",function() {
-    console.log("test")
     $(".chat-group-form__search_delete").remove();
     });
   
