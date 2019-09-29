@@ -24,11 +24,14 @@
     .chat-group-form__field--left
       %label.chat-group-form__label{for: "chat_group_チャットメンバー"} チャットメンバー
     .chat-group-form__field--right
-    
+      -# #chat-group-users
       .chat-group-form__search
-      .chat-group-form__search_delete
-      - @group.group_users.each do |group_user|
-        = group_user.user.name
+      
+        - @group.group_users.each do |group_user|
+          .chat-group-user
+            = group_user.user.name
+            -#  %input{name: "group[user_ids][]", type: "hidden", :value: "group-user_ids"}/
+          .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
       .chat-group-form__search_delete
       -#  %input#user-search-field.chat-group-form__input
       / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
