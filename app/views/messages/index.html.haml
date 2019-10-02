@@ -6,17 +6,17 @@
     .header
       .left-header
         .left-header__title
-          グループ名
-        -#   - current_user.groups.each do |group|
-        -# 　= link_to group_messages_path(group) do
-        -#   .group__name
-        -#     = group.name
+          =(@group.name)          
+        -#   - current_user.name.each do |user|
+        -# = link_to group_messages_path(group) do
+        
         %ul.left-header__members
           Member：
           %li.member
-            -# メンバー名
+          =current_user.name
           %li.member
-            -# メンバー名
+        -# -  current_user.name.each do |user|
+        -#     =(@user.name)
           %li.member
             -# メンバー名
       .right-header
