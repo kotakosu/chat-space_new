@@ -6,14 +6,9 @@
     .header
       .left-header
         .left-header__title
-          =(@group.name)          
-        -#   - current_user.name.each do |user|
-        -# = link_to group_messages_path(group) do
-        
+          =(@group.name)                       
         %ul.left-header__members
-          Member：
-          
-         
+          Member：                   
           %li.member
           - @group.users.each do |user|
             =user.name
