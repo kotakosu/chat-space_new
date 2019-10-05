@@ -1,7 +1,7 @@
 $(function(){ 
   function buildHTML(message){
     var image = (message.image.url) ? `<img class= "lower-message__image" src=${message.image.url} >` : "";
-     var html =
+    var html =
       `<div class="message" data-message-id=${message.id}>
          <div class="upper-message">
            <div class="upper-message__user-name">
@@ -18,14 +18,14 @@ $(function(){
          </div>
          <img src=${image} >
        </div>`
-     return html;
+    return html;
    } 
 $('.new_message').on('submit', function(e){
  e.preventDefault();
  var formData = new FormData(this);
  var url = $(this).attr('action')
 
- $('#chat-footer__send-btn').removeAttr('data-disable-with');
+ 
 
  $.ajax({
    url: url,
@@ -36,15 +36,24 @@ $('.new_message').on('submit', function(e){
    contentType: false
  })
   .done(function(data){
+    console.log(data)
     var html = buildHTML(data);
     $('.messages').append(html);
     $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');   
     $('#new_message')[0].reset();
+    // $('.form__submit').removeAttr('disabled');
+    
   })
    .fail(function(){
      alert('error');
    });
-   $("#message").prop("disabled", true);
+
+   .always(function(data){
+    var html = buildHTML(data);
+    $('.form__submit').removeAttr('disabled');
+    });
+   
+  //  $("#message").prop("disabled", true);
 });
 
 var reloadMessages = function() {
