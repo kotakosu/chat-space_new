@@ -44,13 +44,13 @@ $('.new_message').on('submit', function(e){
     // $('.form__submit').removeAttr('disabled');
     
   })
+   
    .fail(function(){
-     alert('error');
+     alert('メッセージを入力して下さい');
    })
 
-   .always(function(data){
-    var html = buildHTML(data);
-    $('.form__submit').removeAttr('disabled');
+   .always(function(){
+      $('.form__submit').removeAttr('disabled');
     });
    
   //  $("#message").prop("disabled", true);
@@ -76,7 +76,7 @@ var reloadMessages = function() {
       insertHTML = buildHTML(message);
       $('.messages').append(insertHTML);
     })
-    $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+    // $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
   })
   .fail(function() {
   });
